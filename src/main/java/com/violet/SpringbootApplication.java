@@ -10,7 +10,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  *
  * <p>
  * Date-Time：  2019-03-13 10:05
- * Company: 道云
  * <p>
  *
  * @author wangchao
