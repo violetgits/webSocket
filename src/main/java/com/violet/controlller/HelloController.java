@@ -1,7 +1,12 @@
 package com.violet.controlller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.violet.entity.User;
+import com.violet.service.UserService;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 简要说明. <br>
@@ -16,8 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "hello";
+    @Resource
+    private UserService userService;
+
+    @GetMapping("/hello")
+    public User hello() {
+        return userService.getUser();
+    }
+
+    @GetMapping("/insert")
+    public int insert(@Param("User") User user) {
+        return userService.insert(user);
     }
 }
