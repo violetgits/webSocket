@@ -1,5 +1,6 @@
 package com.violet.controlller;
 
+import com.alibaba.fastjson.JSON;
 import com.violet.entity.User;
 import com.violet.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,7 @@ public class HelloController {
 
     @GetMapping("/insert")
     public int insert(@Param("User") User user) {
+        log.info("user:{}", JSON.toJSONString(user));
         return userService.insert(user);
     }
 }
