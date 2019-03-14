@@ -7,6 +7,24 @@ spring:
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 10
+      min-idle: 5
+      max-wait: 10000
+      time-between-eviction-runs-millis: 60000 #配置间隔多久启动一次DestroyThread
+      min-evictable-idle-time-millis: 30000 #配置一个连接在池中最大空闲时间
+      test-on-borrow: false #从连接池获取连接时是否检查连接有效性
+      test-on-return: false #往连接池归还连接时是否检查连接有效性
+      test-while-idle: true #从连接池获取连接时是否检查连接有效性
+      validation-query: select 1 #检验连接是否有效的查询语句
+      #validation-query-timeout: 60000 #时间
+      keep-alive: true #打开后，增强timeBetweenEvictionRunsMillis的周期性连接检查
+      remove-abandoned: true #连接泄露检查，打开removeAbandoned功能
+      remove-abandoned-timeout: 80 #超时时间
+      pool-prepared-statements: true #打开PSCache，并且指定每个连接上PSCache的大小
+      max-pool-prepared-statement-per-connection-size: 20
+
 mybatis:
   mapper-locations: classpath:/com/violet/mapper/xml/*.xml
   configuration:
