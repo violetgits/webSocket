@@ -3,6 +3,8 @@ package com.violet.mapper;
 import com.violet.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 简要说明. <br>
  *
@@ -36,5 +38,5 @@ public interface UserMapper {
      *
      * @return user
      */
-    User getUser();
+    List<User> getUser();
 }

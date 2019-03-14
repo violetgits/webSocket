@@ -2,11 +2,14 @@ package com.violet.controlller;
 
 import com.violet.entity.User;
 import com.violet.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 简要说明. <br>
@@ -19,14 +22,16 @@ import javax.annotation.Resource;
  * @version 1.0.0
  */
 @RestController
+@Slf4j
 public class HelloController {
 
     @Resource
     private UserService userService;
 
-    @GetMapping("/hello")
-    public User hello() {
-        return userService.getUser();
+    @GetMapping("/hello/{pageNum}/{pageSize}")
+    public List<User> hello(@PathVariable int pageNum, @PathVariable int pageSize) {
+        log.info("pageNum:{},pageSize:{}", pageNum, pageSize);
+        return userService.getUser(pageNum, pageSize);
     }
 
     @GetMapping("/insert")

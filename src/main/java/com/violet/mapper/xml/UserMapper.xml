@@ -51,6 +51,6 @@
     </insert>
     <select id="getUser" resultMap="BaseResultMap">
         select *
-        from user;
+        from user
     </select>
 </mapper>
