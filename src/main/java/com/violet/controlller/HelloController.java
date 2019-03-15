@@ -4,12 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.violet.entity.User;
 import com.violet.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -24,20 +27,27 @@ import java.util.List;
  */
 @RestController
 @Slf4j
-public class HelloController {
+public class HelloController extends BeanController {
 
     @Resource
     private UserService userService;
 
-    @GetMapping("/hello/{pageNum}/{pageSize}")
-    public List<User> hello(@PathVariable int pageNum, @PathVariable int pageSize) {
+
+    @GetMapping("/get")
+    public List<User> hello(@NotEmpty int pageNum, @Min(value = 2) int pageSize) {
         log.info("pageNum:{},pageSize:{}", pageNum, pageSize);
         return userService.getUser(pageNum, pageSize);
     }
 
-    @GetMapping("/insert")
-    public int insert(@Param("User") User user) {
+    @PostMapping("/insert")
+    public String insert(@Valid User user, BindingResult result) {
         log.info("user:{}", JSON.toJSONString(user));
-        return userService.insert(user);
+        String msg = validator(result);
+        if (msg != null) {
+            return msg;
+        }
+        return userService.insert(user) == 1 ? "SUCCESS" : "FAIL";
     }
+
+
 }
