@@ -1,9 +1,13 @@
 package com.violet;
 
+import com.violet.config.TraceNoFilter;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 
 /**
  * 简要说明. <br>
@@ -16,7 +20,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @version 1.0.0
  */
 @SpringBootApplication
-public class SpringbootApplication extends SpringBootServletInitializer {
+public class SpringbootApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
     public SpringbootApplication() {
     }
@@ -30,4 +34,16 @@ public class SpringbootApplication extends SpringBootServletInitializer {
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
+    @Bean("traceNoFilter")
+    public FilterRegistrationBean<TraceNoFilter> traceNoFilter() {
+        FilterRegistrationBean<TraceNoFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(new TraceNoFilter());
+        registration.addUrlPatterns("/*");
+        return registration;
+    }
+
+    @Override
+    public void run(String... args) {
+        System.out.println("=======spring boot启动完成=======");
+    }
 }

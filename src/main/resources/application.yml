@@ -20,7 +20,7 @@ spring:
       validation-query: select 1 #检验连接是否有效的查询语句
       #validation-query-timeout: 60000 #时间
       keep-alive: true #打开后，增强timeBetweenEvictionRunsMillis的周期性连接检查
-      remove-abandoned: true #连接泄露检查，打开removeAbandoned功能
+      remove-abandoned: false #连接泄露检查，打开removeAbandoned功能
       remove-abandoned-timeout: 1800 #超时时间
       pool-prepared-statements: true #打开PSCache，并且指定每个连接上PSCache的大小
       max-pool-prepared-statement-per-connection-size: 20
@@ -33,3 +33,4 @@ mybatis:
   mapper-locations: classpath:/com/violet/mapper/xml/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

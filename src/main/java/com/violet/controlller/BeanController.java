@@ -31,13 +31,15 @@ class BeanController {
             List<FieldError> fieldErrors = result.getFieldErrors();
             //获取本地locale,zh_CN
             Locale currentLocale = LocaleContextHolder.getLocale();
-            //遍历错误字段获取错误消息
             fieldErrors.forEach(fieldError -> {
                 //获取错误信息
                 String errorMessage = messageSource.getMessage(fieldError, currentLocale);
-                //添加到错误消息集合内
                 msg.append(fieldError.getField()).append("：").append(errorMessage).append(" , ");
             });
+            //删除最后的逗号
+            if (msg.length() > 0) {
+                msg.deleteCharAt(msg.length() - 1);
+            }
             return msg.toString();
         }
         return null;

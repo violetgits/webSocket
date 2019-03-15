@@ -29,8 +29,7 @@ public class User implements Serializable {
     @Email
     private String eMail;
 
-
-    @FlagValidator(values = {1, 0})
+    @FlagValidator
     private int isValid;
 
     private static final long serialVersionUID = 1L;

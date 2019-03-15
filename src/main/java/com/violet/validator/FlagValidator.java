@@ -20,11 +20,13 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = FlagValidatorClass.class)
 public @interface FlagValidator {
 
-    int[] values();
+    int[] values() default {1, 0};
 
-    String message() default "flag不存在";
+    String message() default "该数值只能为1或0";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+
 }
