@@ -44,6 +44,6 @@ public class SpringbootApplication extends SpringBootServletInitializer implemen
 
     @Override
     public void run(String... args) {
-        System.out.println("=======spring boot启动完成=======");
+        System.out.println("============spring boot启动完成============");
     }
 }
