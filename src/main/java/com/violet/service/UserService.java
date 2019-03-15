@@ -1,37 +1,34 @@
 package com.violet.service;
 
-import com.github.pagehelper.PageHelper;
 import com.violet.entity.User;
-import com.violet.mapper.UserMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * 简要说明. <br>
  *
  * <p>
- * Date-Time：  2019-03-13 16:58
+ * Date-Time：  2019-03-15 16:14
  * <p>
  *
  * @author wangchao
  * @version 1.0.0
  */
-@Service
-@Slf4j
-public class UserService {
+public interface UserService {
 
-    @Resource
-    private UserMapper userMapper;
 
-    public List<User> getUser(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        return userMapper.getUser();
-    }
+    List<User> getUser(int pageNum, int pageSize);
 
-    public int insert(User user) {
-        return userMapper.insert(user);
-    }
+    int deleteByPrimaryKey(String userName);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(String userName);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+
 }

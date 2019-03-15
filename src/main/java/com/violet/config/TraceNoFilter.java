@@ -25,7 +25,6 @@ public class TraceNoFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("日志堆栈号过滤器执行中--------------");
         TraceNoUtil.newTraceNo();
         try {
             filterChain.doFilter(servletRequest, servletResponse);

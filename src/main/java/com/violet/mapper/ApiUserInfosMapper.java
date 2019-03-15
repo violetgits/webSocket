@@ -1,6 +1,7 @@
 package com.violet.mapper;
 
 import com.violet.entity.ApiUserInfos;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author wangchao
  * @version 1.0.0
  */
+@Mapper
 public interface ApiUserInfosMapper {
 
     int deleteByPrimaryKey(String auiAppId);

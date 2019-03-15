@@ -1,17 +1,13 @@
 package com.violet.entity;
 
-import com.violet.validator.FlagValidator;
-import lombok.Data;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  * 简要说明. <br>
  *
  * <p>
- * Date-Time：  2019-03-13 10:27
+ * Date-Time：  2019-03-15 16:14
  * <p>
  *
  * @author wangchao
@@ -19,19 +15,11 @@ import java.io.Serializable;
  */
 @Data
 public class User implements Serializable {
-
-    @NotEmpty
     private String userName;
 
-    @NotEmpty
     private String password;
 
-    @Email
     private String eMail;
 
-    @FlagValidator
-    private int isValid;
-
     private static final long serialVersionUID = 1L;
-
 }

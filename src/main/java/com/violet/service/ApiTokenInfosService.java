@@ -1,20 +1,20 @@
-package com.violet.mapper;
+package com.violet.service;
 
 import com.violet.entity.ApiTokenInfos;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 简要说明. <br>
  *
  * <p>
- * Date-Time：  2019-03-15 16:41
+ * Date-Time：  2019-03-15 16:09
  * <p>
  *
  * @author wangchao
  * @version 1.0.0
  */
-@Mapper
-public interface ApiTokenInfosMapper {
+public interface ApiTokenInfosService {
+
+
     int deleteByPrimaryKey(Integer atiId);
 
     int insert(ApiTokenInfos record);
@@ -28,4 +28,7 @@ public interface ApiTokenInfosMapper {
     int updateByPrimaryKeyWithBLOBs(ApiTokenInfos record);
 
     int updateByPrimaryKey(ApiTokenInfos record);
+
 }
+
+

@@ -1,14 +1,13 @@
 package com.violet.entity;
 
-import lombok.Data;
-
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  * 简要说明. <br>
  *
  * <p>
- * Date-Time：  2019-03-13 10:27
+ * Date-Time：  2019-03-15 16:41
  * <p>
  *
  * @author wangchao
